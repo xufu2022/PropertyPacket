@@ -1,0 +1,553 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "nopcommerceContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Nopreverseengineering",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[AclRecord]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ActivityLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ActivityLogType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Address]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AddressAttribute]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AddressAttributeValue]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Affiliate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BackInStockSubscription]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BlogComment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BlogPost]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Campaign]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Category]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CategoryTemplate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CheckoutAttribute]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CheckoutAttributeValue]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Country]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CrossSellProduct]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Currency]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Customer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Customer_CustomerRole_Mapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CustomerAddresses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CustomerAttribute]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CustomerAttributeValue]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CustomerPassword]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CustomerRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DeliveryDate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Discount]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Discount_AppliedToCategories]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Discount_AppliedToManufacturers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Discount_AppliedToProducts]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DiscountRequirement]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DiscountUsageHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Download]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EmailAccount]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ExternalAuthenticationRecord]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Forums_Forum]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Forums_Group]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Forums_Post]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Forums_PostVote]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Forums_PrivateMessage]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Forums_Subscription]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Forums_Topic]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GdprConsent]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GdprLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GenericAttribute]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GiftCard]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GiftCardUsageHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Language]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LocaleStringResource]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LocalizedProperty]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Log]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Manufacturer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ManufacturerTemplate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MeasureDimension]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MeasureWeight]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MessageTemplate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MigrationVersionInfo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[News]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[NewsComment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[NewsLetterSubscription]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[NewsLetterSubscriptionType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Order]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[OrderItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[OrderNote]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PermissionRecord]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PermissionRecord_Role_Mapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Picture]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PictureBinary]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Poll]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PollAnswer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PollVotingRecord]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PredefinedProductAttributeValue]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product_Category_Mapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product_Manufacturer_Mapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product_Picture_Mapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product_ProductAttribute_Mapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product_ProductTag_Mapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product_SpecificationAttribute_Mapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductAttribute]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductAttributeCombination]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductAttributeCombinationPicture]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductAttributeValue]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductAttributeValuePicture]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductAvailabilityRange]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductReview]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductReview_ReviewType_Mapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductReviewHelpfulness]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductTag]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductTemplate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductVideo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductWarehouseInventory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[QueuedEmail]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RecurringPayment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RecurringPaymentHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RelatedProduct]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReturnRequest]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReturnRequestAction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReturnRequestReason]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReviewType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RewardPointsHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ScheduleTask]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SearchTerm]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Setting]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shipment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ShipmentItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ShippingMethod]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ShippingMethodRestrictions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ShoppingCartItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SpecificationAttribute]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SpecificationAttributeGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SpecificationAttributeOption]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StateProvince]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StockQuantityHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Store]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StoreMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaxCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TierPrice]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Topic]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TopicTemplate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UrlRecord]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Vendor]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[VendorAttribute]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[VendorAttributeValue]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[VendorNote]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Video]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Warehouse]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}
