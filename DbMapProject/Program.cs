@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using PropertyPacket.Infrastructure;
 using System;
 
@@ -18,7 +19,16 @@ IHostBuilder builder = Host.CreateDefaultBuilder(args)
         // Access the configuration
         var configuration = hostContext.Configuration;
         services.AddDbContext<PropertyPacketContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), x => x.UseHierarchyId())
+                    .EnableSensitiveDataLogging()
+            .LogTo(
+                s =>
+                {
+                    //if (LoggingEnabled)
+                    //{
+                    //    Console.WriteLine(s);
+                    //}
+                }, LogLevel.Information));
 
         // Register the custom service
         try

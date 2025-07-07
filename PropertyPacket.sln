@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utilities", "utilities", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbMapProject", "DbMapProject\DbMapProject.csproj", "{DB30784B-CCF4-4838-A0DF-0893822112A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleTestEf9", "tests\SampleTestEf9\SampleTestEf9.csproj", "{96619C59-006A-4A3E-A7AC-B0A247DD5076}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{DB30784B-CCF4-4838-A0DF-0893822112A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB30784B-CCF4-4838-A0DF-0893822112A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB30784B-CCF4-4838-A0DF-0893822112A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96619C59-006A-4A3E-A7AC-B0A247DD5076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96619C59-006A-4A3E-A7AC-B0A247DD5076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96619C59-006A-4A3E-A7AC-B0A247DD5076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96619C59-006A-4A3E-A7AC-B0A247DD5076}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{C4AE1549-ACAC-4A20-BCC6-801EC7076F7A} = {34C7B04E-D1FC-4EE5-A613-571233508BEC}
 		{99D6C8CD-A179-4246-8B49-9A5EFD40F4C7} = {34C7B04E-D1FC-4EE5-A613-571233508BEC}
 		{DB30784B-CCF4-4838-A0DF-0893822112A9} = {0745CF73-9F22-4852-9B8D-ACBA62064EE4}
+		{96619C59-006A-4A3E-A7AC-B0A247DD5076} = {9F1DEEA2-DDC8-47EE-AF6A-1F4D48D8B81F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F45B8F28-A643-43DF-9A64-9A4FAB18D669}

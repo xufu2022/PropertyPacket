@@ -17,6 +17,9 @@ namespace PropertyPacket.Infrastructure.MappingConfigurations.Catalog
             builder.Property(e => e.ViewPath)
                 .IsRequired()
                 .HasMaxLength(400);
+            builder.Property(ct => ct.DisplayOrder)
+                  .HasField("_displayOrder");
+            builder.Ignore(ct => ct.IsActive);
             builder.ToTable("CategoryTemplate");
 
         }

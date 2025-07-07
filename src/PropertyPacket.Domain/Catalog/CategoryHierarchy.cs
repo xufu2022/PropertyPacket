@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PropertyPacket.Domain.Catalog
 {
-    //  public HierarchyId Path { get; set; }
-    public partial class Category : BaseEntity
+    public class CategoryHierarchy : BaseEntity
     {
         public required string Name { get; set; }
 
@@ -14,10 +14,7 @@ namespace PropertyPacket.Domain.Catalog
         /// </summary>
         public required string Description { get; set; }
 
-        public int ParentCategoryId { get; set; }
-
-        public Category Parent { get; set; }
-        public IList<Category> Children { get; protected set; } = new List<Category>();
+        public required HierarchyId Path { get; set; }
         public int PictureId { get; set; }
 
         public int PageSize { get; set; }
