@@ -9,8 +9,8 @@ namespace PropertyPacket.Infrastructure
 {
     public class PropertyPacketContext(DbContextOptions<PropertyPacketContext> options) : DbContext(options)
     {
-        public Category Categories { get; set; } = null!;
-        public CategoryTemplate CategoriesTemplate { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<CategoryTemplate> CategoriesTemplate { get; set; } = null!;
 
         public DbSet<CategoryHierarchy> CategoryHierarchies => Set<CategoryHierarchy>();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

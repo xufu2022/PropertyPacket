@@ -41,7 +41,8 @@ namespace PropertyPacket.Data.MappingConfigurations.Catalog
             builder.HasOne(c => c.Parent)
                 .WithMany(c => c.Children)
                 .HasForeignKey(c => c.ParentCategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .IsRequired(false) // Allow null for root categories
+               .OnDelete(DeleteBehavior.Restrict); // Prevent cascading deletes
 
             builder.HasOne<CategoryTemplate>()
                 .WithMany()

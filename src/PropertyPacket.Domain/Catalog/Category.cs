@@ -4,7 +4,6 @@ using System.Text;
 
 namespace PropertyPacket.Domain.Catalog
 {
-    //  public HierarchyId Path { get; set; }
     public partial class Category : BaseEntity
     {
         public required string Name { get; set; }
@@ -14,10 +13,10 @@ namespace PropertyPacket.Domain.Catalog
         /// </summary>
         public required string Description { get; set; }
 
-        public int ParentCategoryId { get; set; }
+        public int? ParentCategoryId { get; set; }
 
-        public Category Parent { get; set; }
-        public IList<Category> Children { get; protected set; } = new List<Category>();
+        public Category? Parent { get; set; }
+        public IList<Category> Children { get; set; } = new List<Category>();
         public int PictureId { get; set; }
 
         public int PageSize { get; set; }
