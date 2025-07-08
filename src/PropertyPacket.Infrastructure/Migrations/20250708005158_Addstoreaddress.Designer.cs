@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.SqlServer.Types;
 using PropertyPacket.Infrastructure;
@@ -13,9 +14,11 @@ using PropertyPacket.Infrastructure;
 namespace PropertyPacket.Infrastructure.Migrations
 {
     [DbContext(typeof(PropertyPacketContext))]
-    partial class PropertyPacketContextModelSnapshot : ModelSnapshot
+    [Migration("20250708005158_Addstoreaddress")]
+    partial class Addstoreaddress
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,27 +225,22 @@ namespace PropertyPacket.Infrastructure.Migrations
                         {
                             b1.Property<string>("City")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)")
-                                .HasColumnName("City");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Country")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)")
-                                .HasColumnName("Country");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Line1")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)")
-                                .HasColumnName("Line1");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Line2")
-                                .HasColumnType("nvarchar(max)")
-                                .HasColumnName("Line2");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("PostCode")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)")
-                                .HasColumnName("PostCode");
+                                .HasColumnType("nvarchar(max)");
                         });
 
                     b.HasKey("Id");

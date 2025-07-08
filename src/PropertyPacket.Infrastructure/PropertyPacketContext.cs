@@ -13,6 +13,10 @@ namespace PropertyPacket.Infrastructure
         public DbSet<CategoryTemplate> CategoriesTemplate { get; set; } = null!;
 
         public DbSet<CategoryHierarchy> CategoryHierarchies => Set<CategoryHierarchy>();
+
+        public DbSet<Domain.Store.Store> Stores => Set<Domain.Store.Store>();
+        public DbSet<Domain.Store.StoreInfo> StoreInfos => Set<Domain.Store.StoreInfo>();
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
                => optionsBuilder.ConfigureWarnings(b => b.Throw(CoreEventId.ShadowPropertyCreated));
         //public DbSet<CategoryTemplate> CategoryTemplates => Set<CategoryTemplate>();

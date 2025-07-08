@@ -10,7 +10,7 @@ namespace SampleTestEf9
 {
     public static class HierarchyIdSample
     {
-        public static async Task Seed(PropertyPacketDbDbContext context)
+        public static async Task Seed(PropertyPacketContext context)
         {
             var faker = new Faker<CategoryHierarchy>()
                 .RuleFor(c => c.Name, f => f.Commerce.Categories(1)[0])
@@ -78,7 +78,7 @@ namespace SampleTestEf9
             await context.AddRangeAsync(list);
         }
 
-        public async static Task<CategoryHierarchy?> FindDirectAncestor(PropertyPackDbetDbContext context, string name)
+        public async static Task<CategoryHierarchy?> FindDirectAncestor(PropertyPacketContext context, string name)
              => await context.CategoryHierarchies
                  .SingleOrDefaultAsync(
                      ancestor => ancestor.Path == context.CategoryHierarchies
@@ -86,7 +86,7 @@ namespace SampleTestEf9
                          .GetAncestor(1));
 
         #region FindAllAncestors
-        public static IQueryable<CategoryHierarchy> FindAllAncestors(PropertyPaDbcketDbContext context, string name)
+        public static IQueryable<CategoryHierarchy> FindAllAncestors(PropertyPacketContext context, string name)
             => context.CategoryHierarchies.Where(
                     ancestor => context.CategoryHierarchies
                         .Single(
@@ -98,14 +98,14 @@ namespace SampleTestEf9
         #endregion
 
         #region FindDirectDescendents
-        public static IQueryable<CategoryHierarchy> FindDirectDescendents(PropertyDbPacketDbContext context, string name)
+        public static IQueryable<CategoryHierarchy> FindDirectDescendents(PropertyPacketContext context, string name)
             => context.CategoryHierarchies.Where(
                 descendent => descendent.Path.GetAncestor(1) == context.CategoryHierarchies
                     .Single(ancestor => ancestor.Name == name).Path);
         #endregion
 
         #region FindAllDescendents
-        public static IQueryable<CategoryHierarchy> FindAllDescendents(ProperDbtyPacketDbContext context, string name)
+        public static IQueryable<CategoryHierarchy> FindAllDescendents(PropertyPacketContext context, string name)
             => context.CategoryHierarchies.Where(
                     descendent => descendent.Path.IsDescendantOf(
                         context.CategoryHierarchies
@@ -135,7 +135,7 @@ namespace SampleTestEf9
         #endregion
 
         #region FindCommonAncestor
-        public static async Task<CategoryHierarchy?> FindCommonAncestor(PropDbertyPacketDbContext context, CategoryHierarchy first, CategoryHierarchy second)
+        public static async Task<CategoryHierarchy?> FindCommonAncestor(PropertyPacketContext context, CategoryHierarchy first, CategoryHierarchy second)
             => await context.CategoryHierarchies
                 .Where(
                     ancestor => first.Path.IsDescendantOf(ancestor.Path)
@@ -145,7 +145,7 @@ namespace SampleTestEf9
         #endregion
 
         #region AddDescendent
-        public static async Task AddDescendent(PrDbopertyPacketDbContext context, CategoryHierarchy ancestor, CategoryHierarchy descendent)
+        public static async Task AddDescendent(PropertyPacketContext context, CategoryHierarchy ancestor, CategoryHierarchy descendent)
         {
             descendent.Path = ancestor.Path.GetReparentedValue(descendent.Path, ancestor.Path);
             await context.CategoryHierarchies.AddAsync(descendent);
@@ -154,7 +154,7 @@ namespace SampleTestEf9
         #endregion
 
         #region generate Path value for new CategoryHierarchy Path value
-        public static HierarchyId GeneratePathValue(DbPropertyPacketDbContext context, string name)
+        public static HierarchyId GeneratePathValue(PropertyPacketContext context, string name)
         {
             var parent = context.CategoryHierarchies
                 .SingleOrDefault(c => c.Name == name);
@@ -167,7 +167,7 @@ namespace SampleTestEf9
         #endregion
 
         #region create a new CategoryHierarchy 
-        public static async Task AddNewCategoryNodDbe(PropertyPacketDbContext context, string parentPath, string newCategoryName)
+        public static async Task AddNewCategoryNodDbe(PropertyPacketContext context, string parentPath, string newCategoryName)
         {
             //plugging into the existing hierarchy.
 

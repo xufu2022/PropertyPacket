@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.SqlServer.Types;
 using PropertyPacket.Infrastructure;
@@ -13,9 +14,11 @@ using PropertyPacket.Infrastructure;
 namespace PropertyPacket.Infrastructure.Migrations
 {
     [DbContext(typeof(PropertyPacketContext))]
-    partial class PropertyPacketContextModelSnapshot : ModelSnapshot
+    [Migration("20250708005427_Addstoreaddress1")]
+    partial class Addstoreaddress1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
