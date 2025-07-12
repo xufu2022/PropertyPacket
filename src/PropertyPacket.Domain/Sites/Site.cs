@@ -2,9 +2,10 @@
 {
     public abstract class AbstractDomain
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; }
 
     }
+
 
     public class Site : AbstractDomain
     {
