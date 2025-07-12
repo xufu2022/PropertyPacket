@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PropertyPacket.Domain.Directory
+﻿namespace PropertyPacket.Domain.Directory
 {
     public partial class Currency
     {

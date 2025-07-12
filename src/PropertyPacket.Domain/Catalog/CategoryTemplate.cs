@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PropertyPacket.Domain.Catalog
+﻿namespace PropertyPacket.Domain.Catalog
 {
     public partial class CategoryTemplate: BaseEntity
     {

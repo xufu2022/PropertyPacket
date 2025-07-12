@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PropertyPacket.Domain.Catalog;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PropertyPacket.Data.MappingConfigurations.Catalog
 {

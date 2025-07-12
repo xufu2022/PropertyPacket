@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PropertyPacket.Domain.Catalog;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PropertyPacket.Infrastructure.Repositories
 {

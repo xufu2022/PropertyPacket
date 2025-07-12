@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PropertyPacket.Domain.Store
+﻿namespace PropertyPacket.Domain.Store
 {
     public class Store : BaseEntity
     {

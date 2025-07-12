@@ -2,9 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using PropertyPacket.Domain.Catalog;
 using PropertyPacket.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SampleTestEf9
 {
