@@ -1,11 +1,4 @@
-﻿using PropertyPacket.Domain.Sites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PropertyPacket.Domain.Assets
+﻿namespace PropertyTenants.Domain.Assets
 {
     public abstract class Listing : AbstractDomain
     {

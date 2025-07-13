@@ -1,7 +1,12 @@
 ﻿
 // set up database connection
 
-using PropertyPacket.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using PropertyTenants.Infrastructure;
 
 IHostBuilder builder = Host.CreateDefaultBuilder(args)
     .ConfigureAppConfiguration((context, config) =>
@@ -13,7 +18,7 @@ IHostBuilder builder = Host.CreateDefaultBuilder(args)
     {
         // Access the configuration
         var configuration = hostContext.Configuration;
-        services.AddDbContext<PropertyPacketContext>(options =>
+        services.AddDbContext<PropertyTenantsDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), x => x.UseHierarchyId())
                     .EnableSensitiveDataLogging()
             .LogTo(
@@ -47,7 +52,7 @@ IHost host = builder.Build();
 // ensure the database is created
 using (var scope = host.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<PropertyPacketContext>();
+    var dbContext = scope.ServiceProvider.GetRequiredService<PropertyTenantsDbContext>();
     dbContext.Database.EnsureCreated();
 }
 

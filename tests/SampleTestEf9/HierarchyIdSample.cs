@@ -1,7 +1,5 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
-using PropertyPacket.Domain.Catalog;
-using PropertyPacket.Infrastructure;
 
 namespace SampleTestEf9
 {

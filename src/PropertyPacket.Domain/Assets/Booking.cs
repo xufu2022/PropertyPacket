@@ -1,7 +1,6 @@
-﻿using PropertyPacket.Domain.Clients;
-using PropertyPacket.Domain.Sites;
+﻿using PropertyTenants.Domain.Clients;
 
-namespace PropertyPacket.Domain.Assets
+namespace PropertyTenants.Domain.Assets
 {
     public class Booking : AbstractDomain
     {
@@ -22,12 +21,12 @@ namespace PropertyPacket.Domain.Assets
     {
         public Guid PropertyId { get; set; }
         public Guid BookingId { get; set; }
-        public Guid ReviewerId { get; set; }
+        //public Guid ReviewerId { get; set; }
         public Decimal Rating { get; set; }
         public required string Comment { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public virtual required Property Property { get; set; }
         public virtual required Booking Booking { get; set; }
-        public virtual required User Reviewer { get; set; }
+        //public virtual required User Reviewer { get; set; }
     }
 }

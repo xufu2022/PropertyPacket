@@ -7,6 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="HierarchyIdSample.cs" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<Content Include="appSettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -27,7 +31,7 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PropertyPacket.Infrastructure\PropertyPacket.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\PropertyPacket.Infrastructure\PropertyTenants.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

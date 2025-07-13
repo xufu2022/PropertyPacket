@@ -1,4 +1,4 @@
-﻿namespace PropertyPacket.Domain.Directory
+﻿namespace PropertyTenants.Domain.Directory
 {
     public partial class Currency
     {

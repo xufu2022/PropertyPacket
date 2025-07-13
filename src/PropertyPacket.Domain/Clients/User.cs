@@ -1,7 +1,6 @@
-﻿using PropertyPacket.Domain.Common;
-using PropertyPacket.Domain.Sites;
+﻿using PropertyTenants.Domain.Common;
 
-namespace PropertyPacket.Domain.Clients
+namespace PropertyTenants.Domain.Clients
 {
     public class User : AbstractDomain
     {
@@ -15,6 +14,5 @@ namespace PropertyPacket.Domain.Clients
         public bool IsHost { get; set; }
         public bool IsGuest { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
     }
 }

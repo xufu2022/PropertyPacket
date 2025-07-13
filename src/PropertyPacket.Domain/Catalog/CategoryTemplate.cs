@@ -1,4 +1,4 @@
-﻿namespace PropertyPacket.Domain.Catalog
+﻿namespace PropertyTenants.Domain.Catalog
 {
     public partial class CategoryTemplate: BaseEntity
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PropertyPacket.Domain.Store;
+using PropertyTenants.Domain.Store;
 
-namespace PropertyPacket.Infrastructure.MappingConfigurations.Store
+namespace PropertyTenants.Infrastructure.MappingConfigurations.Store
 {
     public class StoreInfoConfiguration : IEntityTypeConfiguration<StoreInfo>
     {

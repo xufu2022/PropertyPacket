@@ -1,4 +1,4 @@
-﻿namespace PropertyPacket.Domain
+﻿namespace PropertyTenants.Domain
 {
     public abstract class BaseEntity
     {

@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Catalog\**" />
+    <EmbeddedResource Remove="Catalog\**" />
+    <None Remove="Catalog\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.HierarchyId" Version="9.0.6" />
   </ItemGroup>
 

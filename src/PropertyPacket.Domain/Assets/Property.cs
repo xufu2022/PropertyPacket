@@ -1,9 +1,8 @@
-﻿using PropertyPacket.Domain.Clients;
-using PropertyPacket.Domain.Common;
-using PropertyPacket.Domain.Sites;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using PropertyTenants.Domain.Clients;
+using PropertyTenants.Domain.Common;
 
-namespace PropertyPacket.Domain.Assets
+namespace PropertyTenants.Domain.Assets
 {
     public class Property: AbstractDomain
     {

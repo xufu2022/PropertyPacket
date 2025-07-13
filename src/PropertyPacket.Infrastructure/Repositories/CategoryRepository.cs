@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PropertyPacket.Domain.Catalog;
 
-namespace PropertyPacket.Infrastructure.Repositories
+namespace PropertyTenants.Infrastructure.Repositories
 {
     public class CategoryRepository
     {
-        private readonly PropertyPacketContext _context;
+        private readonly PropertyTenantsDbContext _context;
 
-        public CategoryRepository(PropertyPacketContext context)
+        public CategoryRepository(PropertyTenantsDbContext context)
         {
             _context = context;
         }

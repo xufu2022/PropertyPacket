@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PropertyPacket.Domain.Catalog;
 
-namespace PropertyPacket.Infrastructure.MappingConfigurations.Catalog
+namespace PropertyTenants.Infrastructure.MappingConfigurations.Catalog
 {
     public class CategoryTemplateConfiguration : IEntityTypeConfiguration<CategoryTemplate>
     {

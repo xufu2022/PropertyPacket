@@ -1,14 +1,32 @@
-﻿namespace PropertyPacket.Domain.Common;
+﻿namespace PropertyTenants.Domain.Common;
 
 public record Address(int Id, string Line1, string Line2, string City, string Country, string PostCode)
 {}
 
-public record ContactInfo(string Email, string PhoneNumber, string Mobile, Address Address)
+public record ContactInfo
 {
-    public void Deconstruct(out string email, out string phoneNumber, out string Mobile, out Address Address)
+    private ContactInfo()
     {
-        email = this.Email;
-        phoneNumber = this.PhoneNumber;
+    }
+
+    public ContactInfo(string Email, string PhoneNumber, string Mobile, Address Address)
+    {
+        this.Email = Email;
+        this.PhoneNumber = PhoneNumber;
+        this.Mobile = Mobile;
+        this.Address = Address;
+    }
+
+    public string Email { get; init; }
+    public string PhoneNumber { get; init; }
+    public string Mobile { get; init; }
+    public Address Address { get; init; }
+
+
+    public void Deconstruct(out string Email, out string PhoneNumber, out string Mobile, out Address Address)
+    {
+        Email = this.Email;
+        PhoneNumber = this.PhoneNumber;
         Mobile = this.Mobile;
         Address = this.Address;
     }

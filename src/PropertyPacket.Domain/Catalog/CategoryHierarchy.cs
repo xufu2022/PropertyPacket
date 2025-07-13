@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace PropertyPacket.Domain.Catalog
+namespace PropertyTenants.Domain.Catalog
 {
     public class CategoryHierarchy : BaseEntity
     {

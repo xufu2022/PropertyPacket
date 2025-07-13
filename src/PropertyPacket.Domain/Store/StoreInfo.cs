@@ -1,4 +1,4 @@
-﻿namespace PropertyPacket.Domain.Store
+﻿namespace PropertyTenants.Domain.Store
 {
     public class StoreInfo : BaseEntity
     {

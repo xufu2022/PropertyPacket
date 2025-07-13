@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{34C7B04E-D1F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9F1DEEA2-DDC8-47EE-AF6A-1F4D48D8B81F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyPacket.Domain", "src\PropertyPacket.Domain\PropertyPacket.Domain.csproj", "{7511FE56-7AB1-47EB-8BD5-84B6B656CEC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyTenants.Domain", "src\PropertyPacket.Domain\PropertyTenants.Domain.csproj", "{7511FE56-7AB1-47EB-8BD5-84B6B656CEC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyPacket.Data", "src\PropertyPacket.Data\PropertyPacket.Data.csproj", "{C4AE1549-ACAC-4A20-BCC6-801EC7076F7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyTenants.Data", "src\PropertyPacket.Data\PropertyTenants.Data.csproj", "{C4AE1549-ACAC-4A20-BCC6-801EC7076F7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyPacket.Infrastructure", "src\PropertyPacket.Infrastructure\PropertyPacket.Infrastructure.csproj", "{99D6C8CD-A179-4246-8B49-9A5EFD40F4C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyTenants.Infrastructure", "src\PropertyPacket.Infrastructure\PropertyTenants.Infrastructure.csproj", "{99D6C8CD-A179-4246-8B49-9A5EFD40F4C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utilities", "utilities", "{0745CF73-9F22-4852-9B8D-ACBA62064EE4}"
 EndProject

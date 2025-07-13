@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace PropertyPacket.Infrastructure.MappingConfigurations.Store
+namespace PropertyTenants.Infrastructure.MappingConfigurations.Store
 {
-    internal class StoreConfiguration : IEntityTypeConfiguration<PropertyPacket.Domain.Store.Store>
+    public class StoreConfiguration : IEntityTypeConfiguration<Domain.Store.Store>
     {
         public void Configure(EntityTypeBuilder<Domain.Store.Store> builder)
         {
