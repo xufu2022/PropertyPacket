@@ -21,12 +21,14 @@ namespace PropertyTenants.Domain.Assets
     {
         public Guid PropertyId { get; set; }
         public Guid BookingId { get; set; }
-        //public Guid ReviewerId { get; set; }
+        public Guid ReviewerId { get; set; } // User who wrote the review
+        public Guid RevieweeId { get; set; } // User being reviewed (host or guest)
         public Decimal Rating { get; set; }
         public required string Comment { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public virtual required Property Property { get; set; }
         public virtual required Booking Booking { get; set; }
-        //public virtual required User Reviewer { get; set; }
+        public virtual required User Reviewer { get; set; }
+        public virtual required User Reviewee { get; set; }
     }
 }

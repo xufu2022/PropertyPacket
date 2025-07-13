@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PropertyTenants.Infrastructure;
 
@@ -12,9 +13,11 @@ using PropertyTenants.Infrastructure;
 namespace PropertyTenants.Infrastructure.Migrations
 {
     [DbContext(typeof(PropertyTenantsDbContext))]
-    partial class PropertyTenantsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250713202637_TPC")]
+    partial class TPC
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,17 +182,8 @@ namespace PropertyTenants.Infrastructure.Migrations
                     b.Property<Guid>("PropertyId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("PropertyId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<decimal>("Rating")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<Guid>("RevieweeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ReviewerId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -200,12 +194,6 @@ namespace PropertyTenants.Infrastructure.Migrations
                         .HasFilter("[BookingId1] IS NOT NULL");
 
                     b.HasIndex("PropertyId");
-
-                    b.HasIndex("PropertyId1");
-
-                    b.HasIndex("RevieweeId");
-
-                    b.HasIndex("ReviewerId");
 
                     b.ToTable("Reviews", (string)null);
                 });
@@ -483,34 +471,14 @@ namespace PropertyTenants.Infrastructure.Migrations
                         .HasForeignKey("PropertyTenants.Domain.Assets.Review", "BookingId1");
 
                     b.HasOne("PropertyTenants.Domain.Assets.Property", "Property")
-                        .WithMany()
-                        .HasForeignKey("PropertyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("PropertyTenants.Domain.Assets.Property", null)
                         .WithMany("Reviews")
-                        .HasForeignKey("PropertyId1");
-
-                    b.HasOne("PropertyTenants.Domain.Clients.User", "Reviewee")
-                        .WithMany()
-                        .HasForeignKey("RevieweeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("PropertyTenants.Domain.Clients.User", "Reviewer")
-                        .WithMany()
-                        .HasForeignKey("ReviewerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Booking");
 
                     b.Navigation("Property");
-
-                    b.Navigation("Reviewee");
-
-                    b.Navigation("Reviewer");
                 });
 
             modelBuilder.Entity("PropertyTenants.Domain.Clients.User", b =>

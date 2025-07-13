@@ -10,12 +10,12 @@ namespace PropertyTenants.Infrastructure
 
         public DbSet<Booking> Bookings => Set<Booking>();
         public DbSet<Review> Reviews => Set<Review>();
-        //public DbSet<Apartment> Apartments => Set<Apartment>();
-        //public DbSet<House> Houses => Set<House>();
-        //public DbSet<GuestHome> GuestHomes => Set<GuestHome>();
-        //public DbSet<UniqueSpace> UniqueSpaces => Set<UniqueSpace>();
-        //public DbSet<Bed> Beds => Set<Bed>();
-        //public DbSet<Hotel> Hotels => Set<Hotel>();
+        public DbSet<Apartment> Apartments => Set<Apartment>();
+        public DbSet<House> Houses => Set<House>();
+        public DbSet<GuestHome> GuestHomes => Set<GuestHome>();
+        public DbSet<UniqueSpace> UniqueSpaces => Set<UniqueSpace>();
+        public DbSet<Bed> Beds => Set<Bed>();
+        public DbSet<Hotel> Hotels => Set<Hotel>();
         public DbSet<Property> Properties => Set<Property>();
         //public DbSet<User> Users => Set<User>();
 

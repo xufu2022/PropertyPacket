@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PropertyTenants.Infrastructure;
 
@@ -12,9 +13,11 @@ using PropertyTenants.Infrastructure;
 namespace PropertyTenants.Infrastructure.Migrations
 {
     [DbContext(typeof(PropertyTenantsDbContext))]
-    partial class PropertyTenantsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250713174553_TPT12")]
+    partial class TPT12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,9 +90,9 @@ namespace PropertyTenants.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable((string)null);
+                    b.ToTable("Listings", (string)null);
 
-                    b.UseTpcMappingStrategy();
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("PropertyTenants.Domain.Assets.Property", b =>
@@ -179,17 +182,8 @@ namespace PropertyTenants.Infrastructure.Migrations
                     b.Property<Guid>("PropertyId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("PropertyId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<decimal>("Rating")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<Guid>("RevieweeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ReviewerId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -200,12 +194,6 @@ namespace PropertyTenants.Infrastructure.Migrations
                         .HasFilter("[BookingId1] IS NOT NULL");
 
                     b.HasIndex("PropertyId");
-
-                    b.HasIndex("PropertyId1");
-
-                    b.HasIndex("RevieweeId");
-
-                    b.HasIndex("ReviewerId");
 
                     b.ToTable("Reviews", (string)null);
                 });
@@ -483,34 +471,14 @@ namespace PropertyTenants.Infrastructure.Migrations
                         .HasForeignKey("PropertyTenants.Domain.Assets.Review", "BookingId1");
 
                     b.HasOne("PropertyTenants.Domain.Assets.Property", "Property")
-                        .WithMany()
-                        .HasForeignKey("PropertyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("PropertyTenants.Domain.Assets.Property", null)
                         .WithMany("Reviews")
-                        .HasForeignKey("PropertyId1");
-
-                    b.HasOne("PropertyTenants.Domain.Clients.User", "Reviewee")
-                        .WithMany()
-                        .HasForeignKey("RevieweeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("PropertyTenants.Domain.Clients.User", "Reviewer")
-                        .WithMany()
-                        .HasForeignKey("ReviewerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Booking");
 
                     b.Navigation("Property");
-
-                    b.Navigation("Reviewee");
-
-                    b.Navigation("Reviewer");
                 });
 
             modelBuilder.Entity("PropertyTenants.Domain.Clients.User", b =>
@@ -564,6 +532,60 @@ namespace PropertyTenants.Infrastructure.Migrations
                     b.HasOne("PropertyTenants.Domain.Store.Store", null)
                         .WithOne("StoreInfo")
                         .HasForeignKey("PropertyTenants.Domain.Store.StoreInfo", "StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.Apartment", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Assets.Listing", null)
+                        .WithOne()
+                        .HasForeignKey("PropertyTenants.Domain.Assets.Apartment", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.Bed", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Assets.Listing", null)
+                        .WithOne()
+                        .HasForeignKey("PropertyTenants.Domain.Assets.Bed", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.GuestHome", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Assets.Listing", null)
+                        .WithOne()
+                        .HasForeignKey("PropertyTenants.Domain.Assets.GuestHome", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.Hotel", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Assets.Listing", null)
+                        .WithOne()
+                        .HasForeignKey("PropertyTenants.Domain.Assets.Hotel", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.House", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Assets.Listing", null)
+                        .WithOne()
+                        .HasForeignKey("PropertyTenants.Domain.Assets.House", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.UniqueSpace", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Assets.Listing", null)
+                        .WithOne()
+                        .HasForeignKey("PropertyTenants.Domain.Assets.UniqueSpace", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

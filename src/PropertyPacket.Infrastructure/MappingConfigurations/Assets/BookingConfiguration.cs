@@ -24,11 +24,27 @@ namespace PropertyTenants.Infrastructure.MappingConfigurations.Assets
         public void Configure(EntityTypeBuilder<Review> builder)
         {
             builder.ToTable("Reviews");
+            builder.HasOne(r => r.Property)
+                .WithMany() // Property can have many reviews
+                .HasForeignKey(r => r.PropertyId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(a => a.Booking)
                 .WithMany()
                 .HasForeignKey(p => p.BookingId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
+            builder.HasOne(r => r.Reviewer)
+                .WithMany() // User can write many reviews
+                .HasForeignKey(r => r.ReviewerId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(r => r.Reviewee)
+                .WithMany() // User can receive many reviews
+                .HasForeignKey(r => r.RevieweeId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }
