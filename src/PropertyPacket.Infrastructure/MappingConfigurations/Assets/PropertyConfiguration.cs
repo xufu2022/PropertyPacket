@@ -29,6 +29,9 @@ namespace PropertyTenants.Infrastructure.MappingConfigurations.Assets
                 .HasForeignKey<Property>("AddressId")
                 .IsRequired();
 
+            builder.Property(p => p.Timestamp)
+                .IsRowVersion();
+
         }
     }
 }

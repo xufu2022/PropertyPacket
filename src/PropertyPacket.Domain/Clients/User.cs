@@ -14,5 +14,7 @@ namespace PropertyTenants.Domain.Clients
         public bool IsHost { get; set; }
         public bool IsGuest { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        public virtual ICollection<UserRole> UserRoles { get; set; } = [];
     }
 }

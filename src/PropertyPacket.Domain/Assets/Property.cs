@@ -24,6 +24,9 @@ namespace PropertyTenants.Domain.Assets
         public virtual required User Host { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; } = [];
         public virtual ICollection<Review> Reviews { get; set; } = [];
+        public virtual ICollection<PropertyFeature> PropertyFeatures { get; set; } = [];
+
+        public byte[] Timestamp { get; set; }
     }
 
     public enum PropertyType
