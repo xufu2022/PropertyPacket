@@ -13,7 +13,7 @@ using PropertyTenants.Infrastructure;
 namespace PropertyTenants.Infrastructure.Migrations
 {
     [DbContext(typeof(PropertyTenantsDbContext))]
-    [Migration("20250715235943_init")]
+    [Migration("20250716002420_init")]
     partial class init
     {
         /// <inheritdoc />
