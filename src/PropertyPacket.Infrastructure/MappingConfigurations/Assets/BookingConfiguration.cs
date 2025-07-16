@@ -23,7 +23,8 @@ namespace PropertyTenants.Infrastructure.MappingConfigurations.Assets
     {
         public void Configure(EntityTypeBuilder<Review> builder)
         {
-            builder.ToTable("Reviews");
+            builder.ToTable("Reviews"); //.ToTable("Reviews", schema: "dbo"); // t => t.ExcludeFromMigrations() do not allow changes to this
+            //tableBuilder => tableBuilder.HasComment("Reviews managed on the website")
             builder.HasOne(r => r.Property)
                 .WithMany() // Property can have many reviews
                 .HasForeignKey(r => r.PropertyId)
@@ -45,6 +46,9 @@ namespace PropertyTenants.Infrastructure.MappingConfigurations.Assets
                 .HasForeignKey(r => r.RevieweeId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Property(r => r.Rating)//.HasColumnType("decimal(5,2)");
+                .HasPrecision(5, 2);
 
         }
     }

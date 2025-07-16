@@ -15,7 +15,10 @@ namespace PropertyTenants.Infrastructure.MappingConfigurations.Assets
         public void Configure(EntityTypeBuilder<Listing> builder)
         {
             #region DiscriminatorConfiguration TPH
-
+            builder.Property<DateTime>("_createdAt")
+                .HasField("_createdAt")
+                .UsePropertyAccessMode(PropertyAccessMode.Field)
+                .HasDefaultValueSql("GETDATE()");
             //builder.ToTable("Listings");
             //builder
             //    .HasDiscriminator<string>("ListingType")

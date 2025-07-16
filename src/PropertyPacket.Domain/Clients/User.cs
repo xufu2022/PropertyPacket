@@ -2,7 +2,7 @@
 
 namespace PropertyTenants.Domain.Clients
 {
-    public class User : AbstractDomain
+    public class User(Guid id) : AbstractDomain(id)
     {
         public required string FriendlyName { get; set; }
         public required string ClientName { get; set; }
@@ -11,6 +11,8 @@ namespace PropertyTenants.Domain.Clients
         public required string UserName { get; set; }
         public required string PasswordHash { get; set; }
         public required ContactInfo ContactInfo { get; set; }
+        public Address? Address { get; init; }
+        public int AddressId { get; init; }
         public bool IsHost { get; set; }
         public bool IsGuest { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

@@ -31,8 +31,8 @@ namespace PropertyTenants.Domain.Assets
     public class PropertyFeature : BaseEntity
     {
         public Guid PropertyId { get; set; }
-        public Property Property { get; set; } = null!;
+        public Property? Property { get; set; } = null!;
         public int FeatureId { get; set; }
-        public Feature Feature { get; set; } = null!;
+        public Feature? Feature { get; set; } = null!;
     }
 }

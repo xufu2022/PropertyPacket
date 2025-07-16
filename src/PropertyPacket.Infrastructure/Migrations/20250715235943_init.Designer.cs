@@ -13,8 +13,8 @@ using PropertyTenants.Infrastructure;
 namespace PropertyTenants.Infrastructure.Migrations
 {
     [DbContext(typeof(PropertyTenantsDbContext))]
-    [Migration("20250713203700_Review1")]
-    partial class Review1
+    [Migration("20250715235943_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,25 @@ namespace PropertyTenants.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Blog", b =>
+                {
+                    b.Property<int>("BlogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BlogId"));
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BlogId");
+
+                    b.ToTable("Blog");
+                });
 
             modelBuilder.Entity("PropertyTenants.Domain.Assets.Booking", b =>
                 {
@@ -66,14 +85,58 @@ namespace PropertyTenants.Infrastructure.Migrations
                     b.ToTable("Bookings", (string)null);
                 });
 
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.Feature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FeatureGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FeatureGroupId");
+
+                    b.ToTable("Features", (string)null);
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.FeatureGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeatureGroups", (string)null);
+                });
+
             modelBuilder.Entity("PropertyTenants.Domain.Assets.Listing", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
@@ -87,6 +150,11 @@ namespace PropertyTenants.Infrastructure.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("_createdAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.HasKey("Id");
 
@@ -105,24 +173,8 @@ namespace PropertyTenants.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("AddressId");
 
-                    b.Property<int>("Bathrooms")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Bedrooms")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("HasKitchen")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasWifi")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("HostId")
                         .HasColumnType("uniqueidentifier");
@@ -130,18 +182,17 @@ namespace PropertyTenants.Infrastructure.Migrations
                     b.Property<DateTime?>("LastUpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MaxGuests")
-                        .HasColumnType("int");
-
-                    b.PrimitiveCollection<string>("Photos")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<decimal>("PricePerNight")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("Timestamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -158,6 +209,81 @@ namespace PropertyTenants.Infrastructure.Migrations
                     b.HasIndex("HostId");
 
                     b.ToTable("Properties", (string)null);
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.PropertyDetail", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Bathrooms")
+                        .HasColumnType("int")
+                        .HasColumnName("Bathrooms");
+
+                    b.Property<int>("Bedrooms")
+                        .HasColumnType("int")
+                        .HasColumnName("Bedrooms");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasColumnName("Description");
+
+                    b.Property<bool>("HasKitchen")
+                        .HasColumnType("bit")
+                        .HasColumnName("HasKitchen");
+
+                    b.Property<bool>("HasWifi")
+                        .HasColumnType("bit")
+                        .HasColumnName("HasWifi");
+
+                    b.Property<int>("MaxGuests")
+                        .HasColumnType("int")
+                        .HasColumnName("MaxGuests");
+
+                    b.PrimitiveCollection<string>("Photos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Photos");
+
+                    b.Property<byte[]>("Timestamp")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion")
+                        .HasColumnName("Timestamp");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Properties", (string)null);
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.PropertyFeature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("FeatureId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FeatureId1")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("PropertyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("PropertyId", "FeatureId");
+
+                    b.HasIndex("FeatureId");
+
+                    b.HasIndex("FeatureId1");
+
+                    b.ToTable("PropertyFeatures", (string)null);
                 });
 
             modelBuilder.Entity("PropertyTenants.Domain.Assets.Review", b =>
@@ -186,7 +312,8 @@ namespace PropertyTenants.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Rating")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)");
 
                     b.Property<Guid>("RevieweeId")
                         .HasColumnType("uniqueidentifier");
@@ -210,7 +337,32 @@ namespace PropertyTenants.Infrastructure.Migrations
 
                     b.HasIndex("ReviewerId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews", null, t =>
+                        {
+                            t.HasComment("Review managed on the website");
+                        });
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Clients.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("Name");
+
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("PropertyTenants.Domain.Clients.User", b =>
@@ -218,6 +370,9 @@ namespace PropertyTenants.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AddressId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ClientName")
                         .IsRequired()
@@ -251,9 +406,54 @@ namespace PropertyTenants.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.ComplexProperty<Dictionary<string, object>>("ContactInfo", "PropertyTenants.Domain.Clients.User.ContactInfo#ContactInfo", b1 =>
+                        {
+                            b1.IsRequired();
+
+                            b1.Property<int>("AddressId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Email")
+                                .IsRequired()
+                                .HasMaxLength(256)
+                                .HasColumnType("nvarchar(256)");
+
+                            b1.Property<string>("Mobile")
+                                .HasMaxLength(15)
+                                .HasColumnType("nvarchar(15)");
+
+                            b1.Property<string>("PhoneNumber")
+                                .HasMaxLength(15)
+                                .HasColumnType("nvarchar(15)");
+                        });
+
                     b.HasKey("Id");
 
+                    b.HasIndex("AddressId")
+                        .IsUnique();
+
                     b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Clients.UserRole", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRoles", (string)null);
                 });
 
             modelBuilder.Entity("PropertyTenants.Domain.Common.Address", b =>
@@ -454,12 +654,23 @@ namespace PropertyTenants.Infrastructure.Migrations
                     b.Navigation("Property");
                 });
 
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.Feature", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Assets.FeatureGroup", "FeatureGroup")
+                        .WithMany("Features")
+                        .HasForeignKey("FeatureGroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("FeatureGroup");
+                });
+
             modelBuilder.Entity("PropertyTenants.Domain.Assets.Property", b =>
                 {
                     b.HasOne("PropertyTenants.Domain.Common.Address", "Address")
                         .WithOne()
                         .HasForeignKey("PropertyTenants.Domain.Assets.Property", "AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("PropertyTenants.Domain.Clients.User", "Host")
@@ -471,6 +682,40 @@ namespace PropertyTenants.Infrastructure.Migrations
                     b.Navigation("Address");
 
                     b.Navigation("Host");
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.PropertyDetail", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Assets.Property", "Property")
+                        .WithOne("PropertyDetail")
+                        .HasForeignKey("PropertyTenants.Domain.Assets.PropertyDetail", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.PropertyFeature", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Assets.Feature", "Feature")
+                        .WithMany()
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PropertyTenants.Domain.Assets.Feature", null)
+                        .WithMany("PropertyFeatures")
+                        .HasForeignKey("FeatureId1");
+
+                    b.HasOne("PropertyTenants.Domain.Assets.Property", "Property")
+                        .WithMany("PropertyFeatures")
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
+
+                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("PropertyTenants.Domain.Assets.Review", b =>
@@ -518,48 +763,32 @@ namespace PropertyTenants.Infrastructure.Migrations
 
             modelBuilder.Entity("PropertyTenants.Domain.Clients.User", b =>
                 {
-                    b.OwnsOne("PropertyTenants.Domain.Common.ContactInfo", "ContactInfo", b1 =>
-                        {
-                            b1.Property<Guid>("UserId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<int>("AddressId")
-                                .HasColumnType("int");
-
-                            b1.Property<string>("Email")
-                                .IsRequired()
-                                .HasMaxLength(256)
-                                .HasColumnType("nvarchar(256)");
-
-                            b1.Property<string>("Mobile")
-                                .HasMaxLength(15)
-                                .HasColumnType("nvarchar(15)");
-
-                            b1.Property<string>("PhoneNumber")
-                                .HasMaxLength(15)
-                                .HasColumnType("nvarchar(15)");
-
-                            b1.HasKey("UserId");
-
-                            b1.HasIndex("AddressId")
-                                .IsUnique();
-
-                            b1.ToTable("Users");
-
-                            b1.HasOne("PropertyTenants.Domain.Common.Address", "Address")
-                                .WithOne()
-                                .HasForeignKey("PropertyTenants.Domain.Clients.User.ContactInfo#PropertyTenants.Domain.Common.ContactInfo", "AddressId")
-                                .OnDelete(DeleteBehavior.Cascade)
-                                .IsRequired();
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserId");
-
-                            b1.Navigation("Address");
-                        });
-
-                    b.Navigation("ContactInfo")
+                    b.HasOne("PropertyTenants.Domain.Common.Address", "Address")
+                        .WithOne()
+                        .HasForeignKey("PropertyTenants.Domain.Clients.User", "AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Address");
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Clients.UserRole", b =>
+                {
+                    b.HasOne("PropertyTenants.Domain.Clients.Role", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PropertyTenants.Domain.Clients.User", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PropertyTenants.Domain.Store.StoreInfo", b =>
@@ -577,11 +806,36 @@ namespace PropertyTenants.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.Feature", b =>
+                {
+                    b.Navigation("PropertyFeatures");
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Assets.FeatureGroup", b =>
+                {
+                    b.Navigation("Features");
+                });
+
             modelBuilder.Entity("PropertyTenants.Domain.Assets.Property", b =>
                 {
                     b.Navigation("Bookings");
 
+                    b.Navigation("PropertyDetail")
+                        .IsRequired();
+
+                    b.Navigation("PropertyFeatures");
+
                     b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Clients.Role", b =>
+                {
+                    b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("PropertyTenants.Domain.Clients.User", b =>
+                {
+                    b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("PropertyTenants.Domain.Store.Store", b =>

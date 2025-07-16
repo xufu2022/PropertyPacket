@@ -2,6 +2,14 @@
 {
     public abstract class AbstractDomain
     {
-        public Guid Id { get; set; }
+        private AbstractDomain()
+        {
+        }
+
+        protected AbstractDomain(Guid id)
+        {
+            Id = id;
+        }
+        public Guid Id { get; init; }
     }
 }

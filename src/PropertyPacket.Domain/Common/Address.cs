@@ -9,25 +9,23 @@ public record ContactInfo
     {
     }
 
-    public ContactInfo(string Email, string PhoneNumber, string Mobile, Address Address)
+    public ContactInfo(string Email, string PhoneNumber, string Mobile)
     {
         this.Email = Email;
         this.PhoneNumber = PhoneNumber;
         this.Mobile = Mobile;
-        this.Address = Address;
     }
 
     public string Email { get; init; }
     public string PhoneNumber { get; init; }
     public string Mobile { get; init; }
-    public Address Address { get; init; }
 
 
-    public void Deconstruct(out string Email, out string PhoneNumber, out string Mobile, out Address Address)
+
+    public void Deconstruct(out string Email, out string PhoneNumber, out string Mobile)
     {
         Email = this.Email;
         PhoneNumber = this.PhoneNumber;
         Mobile = this.Mobile;
-        Address = this.Address;
     }
 }

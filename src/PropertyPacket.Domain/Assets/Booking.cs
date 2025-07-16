@@ -1,8 +1,9 @@
-﻿using PropertyTenants.Domain.Clients;
+﻿using Microsoft.EntityFrameworkCore;
+using PropertyTenants.Domain.Clients;
 
 namespace PropertyTenants.Domain.Assets
 {
-    public class Booking : AbstractDomain
+    public class Booking(Guid id) : AbstractDomain(id)
     {
         public Guid PropertyId { get; set; }
         public Guid GuestId { get; set; }
@@ -17,7 +18,8 @@ namespace PropertyTenants.Domain.Assets
         public virtual required Review Review { get; set; }
     }
 
-    public class Review : AbstractDomain
+    [Comment("Review managed on the website")]
+    public class Review(Guid id) : AbstractDomain(id)
     {
         public Guid PropertyId { get; set; }
         public Guid BookingId { get; set; }

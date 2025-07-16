@@ -15,7 +15,13 @@ namespace PropertyTenants.Infrastructure.MappingConfigurations.Clients
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("Users");
-            builder.OwnsOne(u => u.ContactInfo, contactInfoBuilder =>
+
+            builder.HasOne(u => u.Address)
+                .WithOne() // One-to-one relationship
+                .HasForeignKey<User>(a=>a.AddressId) // Foreign key is on the Users table
+                .IsRequired();
+
+            builder.ComplexProperty(u => u.ContactInfo, contactInfoBuilder =>
             {
                 contactInfoBuilder.Property(ci => ci.Email)
                     .IsRequired()
@@ -28,13 +34,6 @@ namespace PropertyTenants.Infrastructure.MappingConfigurations.Clients
                     .IsRequired(false);
                 contactInfoBuilder.Property<int>("AddressId").IsRequired();
 
-                //contactInfoBuilder.HasOne(ci => ci.Address)
-                //    .WithOne().HasForeignKey<ContactInfo>("AddressId")
-                //    .IsRequired();
-                contactInfoBuilder.HasOne<Address>(ci => ci.Address)
-                    .WithOne()
-                    .HasForeignKey<ContactInfo>("AddressId")
-                    .IsRequired();
             });
 
         }

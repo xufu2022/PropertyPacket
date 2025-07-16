@@ -1,6 +1,6 @@
 ﻿namespace PropertyTenants.Domain.Sites;
 
-public class Site : AbstractDomain
+public class Site(Guid id) : AbstractDomain(id)
 {
     public required string Name { get; set; }
     public required string Url { get; set; }
@@ -15,17 +15,15 @@ public class Site : AbstractDomain
     public string? PhoneNumber { get; set; }
     public string? Email { get; set; }
     public string? Mobile { get; set; }
-
 }
 
-public class SiteInfo : AbstractDomain
+public class SiteInfo(Guid id) : AbstractDomain(id)
 {
     private Guid SiteId { get; set; }
     public required string ImageUrl { get; set; }
     public required string Title { get; set; }
     public required string ContactInfo { get; set; }
     public required string Copyright { get; set; }
-
 }
 
 public record SiteAddress(string Line1, string Line2, string City, string Country, string PostCode){}

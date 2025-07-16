@@ -23,6 +23,12 @@ namespace PropertyTenants.Infrastructure.MappingConfigurations.Clients
                 .OnDelete(DeleteBehavior.Cascade) 
                 .IsRequired();
 
+            builder
+                .Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.HasAlternateKey(x => x.Name);
+
         }
     }
 

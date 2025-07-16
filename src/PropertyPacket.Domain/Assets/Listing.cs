@@ -2,7 +2,8 @@
 {
     public abstract class Listing : AbstractDomain
     {
-        public DateTime CreatedAt { get; protected set; }
+        private DateTime _createdAt;
+        public DateTime CreatedAt => _createdAt;
         public DateTime UpdatedAt { get; protected set; }
         public void UpdateTimestamp()
         {
@@ -12,7 +13,7 @@
         public decimal PricePerNight { get; private set; }
         public bool IsAvailable { get; private set; }
 
-        protected Listing(Guid id, string title, decimal pricePerNight) 
+        protected Listing(Guid id, string title, decimal pricePerNight) : base(id)
         {
             Id = id != Guid.Empty ? id : throw new ArgumentException("Id cannot be empty.", nameof(id));
             Title = title ?? throw new ArgumentNullException(nameof(title));

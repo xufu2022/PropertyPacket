@@ -8,5 +8,7 @@
         public required Address AddressInfo { get; set; }
     }
 
-    public readonly record struct Address(string Line1, string? Line2, string City, string Country, string PostCode);
+    public readonly record struct Address(string Line1, string? Line2, string City, string Country, string PostCode)
+    {
+    }
 }
