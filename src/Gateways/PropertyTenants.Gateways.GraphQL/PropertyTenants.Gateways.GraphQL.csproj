@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.8" />
+    <PackageReference Include="HotChocolate.AspNetCore.CommandLine" Version="15.1.8" />
+    <PackageReference Include="HotChocolate.Data" Version="15.1.8" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.1.8" />
+    <PackageReference Include="HotChocolate.Types.Analyzers" Version="15.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Types\Configuration\" />
+    <Folder Include="Types\Errors\" />
+    <Folder Include="Types\EventMessages\" />
+    <Folder Include="Types\Filtering\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\PropertyPacket.Domain\PropertyTenants.Domain.csproj" />
+    <ProjectReference Include="..\..\PropertyTenants.Application\PropertyTenants.Application.csproj" />
+    <ProjectReference Include="..\..\PropertyTenants.Persistence\PropertyTenants.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Messaging\Kafka\KafkaHealthCheck.cs" />
+    <Compile Remove="Messaging\Kafka\KafkaOptions.cs" />
+    <Compile Remove="Messaging\Kafka\KafkaReceiver.cs" />
+    <Compile Remove="Messaging\Kafka\KafkaSender.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="AWSSDK.S3" Version="4.0.6" />
+	  <PackageReference Include="Azure.Communication.Sms" Version="1.0.1" />
+	  <PackageReference Include="Azure.Data.AppConfiguration" Version="1.6.1" />
+	  <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.4.0" />
+	  <PackageReference Include="Azure.Identity" Version="1.14.2" />
+	  <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.20.1" />
+	  <PackageReference Include="Azure.Monitor.OpenTelemetry.Exporter" Version="1.4.0" />
+	  <PackageReference Include="Azure.Storage.Blobs" Version="12.25.0" />
+	  <PackageReference Include="Azure.Storage.Queues" Version="12.23.0" />
+	  <PackageReference Include="CryptographyHelper" Version="3.1.0" />
+	  <PackageReference Include="CsvHelper" Version="33.1.0" />
+	  <PackageReference Include="Dapper.StrongName" Version="2.1.66" />
+	  <PackageReference Include="IdentityModel" Version="7.0.0" />
+	  <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.23.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="8.2.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.Extensions.Caching.Hybrid" Version="9.7.0" />
+	  <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="2.3.0" />
+	  <PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.Graph" Version="5.86.0" />
+	  <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
+	  <PackageReference Include="OpenTelemetry.Exporter.Zipkin" Version="1.12.0" />
+	  <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.10.0-beta.1" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.12.0" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.Process" Version="1.10.0-beta.1" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.12.0" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
+	  <PackageReference Include="RabbitMQ.Client" Version="7.1.2" />
+	  <PackageReference Include="SendGrid" Version="9.29.3" />
+	  <PackageReference Include="Twilio" Version="7.11.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PropertyPacket.Domain\PropertyTenants.Domain.csproj" />
+    <ProjectReference Include="..\PropertyTenants.CrossCuttingConcerns\PropertyTenants.CrossCuttingConcerns.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Messaging\Kafka\" />
+  </ItemGroup>
+
+</Project>
