@@ -1,119 +1,35 @@
-﻿using PropertyTenants.Domain.Entities.Features;
-using PropertyTenants.Gateways.GraphQL.Types.InputTypes;
 using PropertyTenants.Persistence;
+using PropertyTenants.Domain.Entities.Properties;
+using PropertyTenants.Domain.Entities.Bookings;
+using PropertyTenants.Domain.Entities.Clients;
+using PropertyTenants.Gateways.GraphQL.Types.InputTypes;
 using Microsoft.EntityFrameworkCore;
+using HotChocolate.Subscriptions;
 
-namespace PropertyTenants.Gateways.GraphQL.Types.Mutations
+namespace PropertyTenants.Gateways.GraphQL.Types.Mutations;
+
+[MutationType]
+public class Mutation
 {
-    public class Mutation
+    public async Task<string> TestMutationAsync()
     {
-        /// <summary>
-        /// Adds a new feature
-        /// </summary>
-        public async Task<Feature> AddFeature(AddFeatureInput input, [Service] PropertyTenantsDbContext context)
-        {
-            var feature = new Feature
-            {
-                Name = input.Name,
-                Description = input.Description,
-                FeatureGroupId = input.FeatureGroupId
-            };
+        return await Task.FromResult("Hello from enhanced GraphQL Mutation with HotChocolate!");
+    }
 
-            await context.Features.AddAsync(feature);
-            await context.SaveChangesAsync();
-            
-            // Load the feature group for the response
-            await context.Entry(feature)
-                .Reference(f => f.FeatureGroup)
-                .LoadAsync();
-                
-            return feature;
-        }
+    public async Task<bool> DeletePropertyAsync(
+        Guid id,
+        [Service] PropertyTenantsDbContext context,
+        [Service] ITopicEventSender eventSender)
+    {
+        var property = await context.Properties.FindAsync(id);
+        if (property == null) return false;
 
-        /// <summary>
-        /// Updates an existing feature
-        /// </summary>
-        public async Task<Feature?> UpdateFeature(UpdateFeatureInput input, [Service] PropertyTenantsDbContext context)
-        {
-            var feature = await context.Features
-                .Include(f => f.FeatureGroup)
-                .FirstOrDefaultAsync(f => f.Id == input.Id);
-                
-            if (feature == null)
-                return null;
+        context.Properties.Remove(property);
+        await context.SaveChangesAsync();
 
-            feature.Name = input.Name;
-            feature.Description = input.Description;
-            feature.FeatureGroupId = input.FeatureGroupId;
+        // Send subscription event
+        await eventSender.SendAsync("PropertyDeleted", new { Id = id });
 
-            context.Features.Update(feature);
-            await context.SaveChangesAsync();
-            return feature;
-        }
-
-        /// <summary>
-        /// Deletes a feature by ID
-        /// </summary>
-        public async Task<bool> DeleteFeature(int id, [Service] PropertyTenantsDbContext context)
-        {
-            var feature = await context.Features.FirstOrDefaultAsync(f => f.Id == id);
-            if (feature == null)
-                return false;
-
-            context.Features.Remove(feature);
-            await context.SaveChangesAsync();
-            return true;
-        }
-
-        /// <summary>
-        /// Adds a new feature group
-        /// </summary>
-        public async Task<FeatureGroup> AddFeatureGroup(AddFeatureGroupInput input, [Service] PropertyTenantsDbContext context)
-        {
-            var featureGroup = new FeatureGroup
-            {
-                Name = input.Name,
-                Description = input.Description
-            };
-
-            await context.FeatureGroups.AddAsync(featureGroup);
-            await context.SaveChangesAsync();
-            
-            return featureGroup;
-        }
-
-        /// <summary>
-        /// Updates an existing feature group
-        /// </summary>
-        public async Task<FeatureGroup?> UpdateFeatureGroup(UpdateFeatureGroupInput input, [Service] PropertyTenantsDbContext context)
-        {
-            var featureGroup = await context.FeatureGroups
-                .Include(fg => fg.Features)
-                .FirstOrDefaultAsync(fg => fg.Id == input.Id);
-                
-            if (featureGroup == null)
-                return null;
-
-            featureGroup.Name = input.Name;
-            featureGroup.Description = input.Description;
-
-            context.FeatureGroups.Update(featureGroup);
-            await context.SaveChangesAsync();
-            return featureGroup;
-        }
-
-        /// <summary>
-        /// Deletes a feature group by ID
-        /// </summary>
-        public async Task<bool> DeleteFeatureGroup(int id, [Service] PropertyTenantsDbContext context)
-        {
-            var featureGroup = await context.FeatureGroups.FirstOrDefaultAsync(fg => fg.Id == id);
-            if (featureGroup == null)
-                return false;
-
-            context.FeatureGroups.Remove(featureGroup);
-            await context.SaveChangesAsync();
-            return true;
-        }
+        return true;
     }
 }
