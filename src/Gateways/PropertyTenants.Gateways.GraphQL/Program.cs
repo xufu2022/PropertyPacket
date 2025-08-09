@@ -1,4 +1,4 @@
-using PropertyTenants.Gateways.GraphQL.Types.Configuration;
+using PropertyTenants.Gateways.GraphQL.Types;
 using PropertyTenants.Persistence;
 using Microsoft.EntityFrameworkCore;
 
